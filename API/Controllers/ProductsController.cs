@@ -65,6 +65,17 @@ namespace API.Controllers
             }
             return BadRequest("Problem deleting the product");
         }
+
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<String>>> GetBrands()
+        {
+            return Ok(await repo.GetBrandsAsync());
+        }
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<String>>> GetTypes()
+        {
+            return Ok(await repo.GetTypesAsync());
+        }
         private bool IsProductExist(int id)
         {
             return repo.ProductExists(id);
